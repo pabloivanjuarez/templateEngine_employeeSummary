@@ -8,11 +8,51 @@ const fs = require("fs");
 const OUTPUT_DIR = path.resolve(__dirname, "output");
 const outputPath = path.join(OUTPUT_DIR, "team.html");
 
-const render = require("./lib/htmlRenderer");
+//render manipulated in order to test app
+const {
+  render,
+  renderManager
+} = require("./lib/htmlRenderer");
 
 
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
+
+// create validate function
+function valFunc() {
+  if (answer !== "") {
+    return true;
+  }
+  return "please fill out!"
+}
+
+inquirer.prompt(
+  [{
+    type: "input",
+    message: "Please give name:",
+    name: "mangerName",
+    validate: valFunc
+  }, {
+    type: "input",
+    message: "Please give id number:",
+    name: "id",
+    validate: valFunc
+  }, {
+    type: "input",
+    message: "Please give email:",
+    name: "mangerEmail",
+    validate: valFunc
+  }, {
+    type: "input",
+    message: "Please give Office Number:",
+    name: "mangerOfficeNum",
+    validate: valFunc
+  }, ]
+).then(function (answers)) {
+  console.log(answers);
+  const manager = new Manager(answers.managerName, answers.id, answers.mangerEmail, answers.managerOfficeNum)
+  console.log(manager);
+}
 
 // After the user has input all employees desired, call the `render` function (required
 // above) and pass in an array containing all employee objects; the `render` function will

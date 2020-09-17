@@ -18,7 +18,7 @@ const {
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
 
-// create validate function
+//validate function
 function valFunc() {
   if (answer !== "") {
     return true;
@@ -48,11 +48,12 @@ inquirer.prompt(
     name: "mangerOfficeNum",
     validate: valFunc
   }, ]
-).then(function (answers)) {
-  console.log(answers);
+).then(function (answers) {
+  // console.log(answers);
   const manager = new Manager(answers.managerName, answers.id, answers.mangerEmail, answers.managerOfficeNum)
   console.log(manager);
-}
+
+})
 
 // After the user has input all employees desired, call the `render` function (required
 // above) and pass in an array containing all employee objects; the `render` function will

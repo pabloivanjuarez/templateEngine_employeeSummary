@@ -9,7 +9,8 @@
   },
   "scripts": {
     "test": "jest --verbose test/*",
-    "test-employee": "jest --verbose test/Employee.test.js"
+    "test-employee": "jest --verbose test/Employee.test.js",
+    "test-manager": "jest verbose test/Manager.test.js"
   },
   "repository": {
     "type": "git",

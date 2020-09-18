@@ -37,8 +37,22 @@ function team() {
       case "Manager":
         addManager();
         break;
-        // engineer
-        // intern
+
+      default:
+        builder()
+    }
+    switch (answer.teamChoice) {
+      case "Engineer":
+        addEngineer();
+        break;
+
+      default:
+        builder()
+    }
+    switch (answer.teamChoice) {
+      case "Intern":
+        addIntern();
+        break;
 
       default:
         builder()
@@ -54,12 +68,12 @@ function addManager() {
       type: "input",
       message: "Please give name:",
       name: "managerName",
-
+      // validate: valFunc
     }, {
       type: "input",
       message: "Please give id number:",
       name: "managerID",
-
+      // validate: valFunc
     }, {
       type: "input",
       message: "Please give email:",
@@ -72,10 +86,10 @@ function addManager() {
       // validate: valFunc
     }, ]
   ).then(function (managerAnswers) {
-    // console.log(answers);
+    //adding answers to Manager handler
     const manager = new Manager(managerAnswers.managerName, managerAnswers.managerID, managerAnswers.managerEmail, managerAnswers.managerOfficeNum)
-    console.log(manager);
     teamMembers.push(manager)
+    //calling starter function, choices
     team()
   })
 }
@@ -86,25 +100,28 @@ function addEngineer() {
     type: "input",
     message: "Please give name:",
     name: "engineerName",
-    validate: valFunc
+    // validate: valFunc
   }, {
     type: "input",
     message: "Please give ID number:",
     name: "engineerID",
-    validate: valFunc
+    // validate: valFunc
   }, {
     type: "input",
     message: "Please give email:",
     name: "engineerEmail",
-    validate: valFunc
+    // validate: valFunc
   }, {
     type: "input",
     message: "Please give GitHub username:",
     name: "gitHub",
-    validate: valFunc
+    // validate: valFunc
   }]).then(function (engineerAnswers) {
-
+    //adding answers to Engineer handler
     const engineer = new Engineer(engineerAnswers.engineerName, engineerAnswers.engineerID, engineerAnswers.engineerEmail, engineerAnswers.gitHub)
+    teamMembers.push(engineer)
+    //calling starter function, choices
+    team()
   })
 }
 
@@ -114,24 +131,28 @@ function addIntern() {
     type: "input",
     message: "Please give name:",
     name: "internName",
-    validate: valFunc
+    // validate: valFunc
   }, {
     type: "input",
     message: "Please give ID number:",
     name: "internID",
-    validate: valFunc
+    // validate: valFunc
   }, {
     type: "input",
     message: "Please give email:",
     name: "internEmail",
-    validate: valFunc
+    // validate: valFunc
   }, {
     type: "input",
     message: "Please give school name:",
     name: "school",
-    validate: valFunc
+    // validate: valFunc
   }]).then(function (internAnswers) {
+    //adding answers to Intern handler
     const intern = new Intern(internAnswers.internName, internAnswers.internID, internAnswers.internEmail, internAnswers.school)
+    teamMembers.push(intern)
+    //calling starter function, choices
+    team()
   })
 }
 

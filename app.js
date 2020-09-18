@@ -157,7 +157,7 @@ function addIntern() {
 }
 
 function builder() {
-  fs.writeFileSync("teamFile.html", render(teamMembers))
+  fs.writeFileSync(outputPath, render(teamMembers))
 }
 
 team()

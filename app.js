@@ -4,15 +4,15 @@ const Intern = require("./lib/Intern");
 const inquirer = require("inquirer");
 const path = require("path");
 const fs = require("fs");
-
+var teamMembers = [];
 const OUTPUT_DIR = path.resolve(__dirname, "output");
 const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 //render manipulated in order to test app
 const {
-  render,
-  renderManager
+  render
 } = require("./lib/htmlRenderer");
+const Choices = require("inquirer/lib/objects/choices");
 
 
 // Write code to use inquirer to gather information about the development team members,
@@ -26,83 +26,120 @@ function valFunc() {
   return "please fill out!"
 }
 
-inquirer.prompt(
-  [{
+function team() {
+  inquirer.prompt([{
+    type: "list",
+    message: "What team member would you like to add?",
+    name: "teamChoice",
+    choices: ["Manager", "Engineer", "Intern", "END"]
+  }]).then(answer => {
+    switch (answer.teamChoice) {
+      case "Manager":
+        addManager();
+        break;
+        // engineer
+        // intern
+
+      default:
+        builder()
+    }
+    // repeat for en and intern
+  })
+}
+
+function addManager() {
+
+  inquirer.prompt(
+    [{
+      type: "input",
+      message: "Please give name:",
+      name: "managerName",
+
+    }, {
+      type: "input",
+      message: "Please give id number:",
+      name: "managerID",
+
+    }, {
+      type: "input",
+      message: "Please give email:",
+      name: "managerEmail",
+      // validate: valFunc
+    }, {
+      type: "input",
+      message: "Please give Office Number:",
+      name: "managerOfficeNum",
+      // validate: valFunc
+    }, ]
+  ).then(function (managerAnswers) {
+    // console.log(answers);
+    const manager = new Manager(managerAnswers.managerName, managerAnswers.managerID, managerAnswers.managerEmail, managerAnswers.managerOfficeNum)
+    console.log(manager);
+    teamMembers.push(manager)
+    team()
+  })
+}
+
+function addEngineer() {
+
+  inquirer.prompt([{
     type: "input",
     message: "Please give name:",
-    name: "mangerName",
+    name: "engineerName",
     validate: valFunc
   }, {
     type: "input",
-    message: "Please give id number:",
-    name: "managerID",
+    message: "Please give ID number:",
+    name: "engineerID",
     validate: valFunc
   }, {
     type: "input",
     message: "Please give email:",
-    name: "mangerEmail",
+    name: "engineerEmail",
     validate: valFunc
   }, {
     type: "input",
-    message: "Please give Office Number:",
-    name: "mangerOfficeNum",
+    message: "Please give GitHub username:",
+    name: "gitHub",
     validate: valFunc
-  }, ]
-).then(function (managerAnswers) {
-  // console.log(answers);
-  const manager = new Manager(managerAnswers.managerName, managerAnswers.managerID, managerAnswers.mangerEmail, managerAnswers.managerOfficeNum)
-  console.log(manager);
+  }]).then(function (engineerAnswers) {
 
-})
+    const engineer = new Engineer(engineerAnswers.engineerName, engineerAnswers.engineerID, engineerAnswers.engineerEmail, engineerAnswers.gitHub)
+  })
+}
 
-inquirer.prompt([{
-  type: "input",
-  message: "Please give name:",
-  name: "engineerName",
-  validate: valFunc
-}, {
-  type: "input",
-  message: "Please give ID number:",
-  name: "engineerID",
-  validate: valFunc
-}, {
-  type: "input",
-  message: "Please give email:",
-  name: "engineerEmail",
-  validate: valFunc
-}, {
-  type: "input",
-  message: "Please give GitHub username:",
-  name: "gitHub",
-  validate: valFunc
-}]).then(function (engineerAnswers) {
-  const engineer = new Engineer(engineerAnswers.engineerName, engineerAnswers.engineerID, engineerAnswers.engineerEmail, engineerAnswers.gitHub)
-})
+function addIntern() {
 
+  inquirer.prompt([{
+    type: "input",
+    message: "Please give name:",
+    name: "internName",
+    validate: valFunc
+  }, {
+    type: "input",
+    message: "Please give ID number:",
+    name: "internID",
+    validate: valFunc
+  }, {
+    type: "input",
+    message: "Please give email:",
+    name: "internEmail",
+    validate: valFunc
+  }, {
+    type: "input",
+    message: "Please give school name:",
+    name: "school",
+    validate: valFunc
+  }]).then(function (internAnswers) {
+    const intern = new Intern(internAnswers.internName, internAnswers.internID, internAnswers.internEmail, internAnswers.school)
+  })
+}
 
-inquirer.prompt([{
-  type: "input",
-  message: "Please give name:",
-  name: "internName",
-  validate: valFunc
-}, {
-  type: "input",
-  message: "Please give ID number:",
-  name: "internID",
-  validate: valFunc
-}, {
-  type: "input",
-  message: "Please give email:",
-  name: "internEmail",
-  validate: valFunc
-}, {
-  type: "input",
-  message: "Please give school name:",
-  name: "school",
-  validate: valFunc
-}]).then(function (internAnswers) {
-  const intern = new Intern(internAnswers.internName, internAnswers.internID, internAnswers.internEmail, internAnswers.school)
-})
+function builder() {
+  fs.writeFileSync("teamFile.html", render(teamMembers))
+}
+
+team()
 
 
 // After the user has input all employees desired, call the `render` function (required

@@ -35,7 +35,7 @@ inquirer.prompt(
   }, {
     type: "input",
     message: "Please give id number:",
-    name: "id",
+    name: "managerID",
     validate: valFunc
   }, {
     type: "input",
@@ -48,12 +48,62 @@ inquirer.prompt(
     name: "mangerOfficeNum",
     validate: valFunc
   }, ]
-).then(function (answers) {
+).then(function (managerAnswers) {
   // console.log(answers);
-  const manager = new Manager(answers.managerName, answers.id, answers.mangerEmail, answers.managerOfficeNum)
+  const manager = new Manager(managerAnswers.managerName, managerAnswers.managerID, managerAnswers.mangerEmail, managerAnswers.managerOfficeNum)
   console.log(manager);
 
 })
+
+inquirer.prompt([{
+  type: "input",
+  message: "Please give name:",
+  name: "engineerName",
+  validate: valFunc
+}, {
+  type: "input",
+  message: "Please give ID number:",
+  name: "engineerID",
+  validate: valFunc
+}, {
+  type: "input",
+  message: "Please give email:",
+  name: "engineerEmail",
+  validate: valFunc
+}, {
+  type: "input",
+  message: "Please give GitHub username:",
+  name: "gitHub",
+  validate: valFunc
+}]).then(function (engineerAnswers) {
+  const engineer = new Engineer(engineerAnswers.engineerName, engineerAnswers.engineerID, engineerAnswers.engineerEmail, engineerAnswers.gitHub)
+})
+
+
+inquirer.prompt([{
+  type: "input",
+  message: "Please give name:",
+  name: "internName",
+  validate: valFunc
+}, {
+  type: "input",
+  message: "Please give ID number:",
+  name: "internID",
+  validate: valFunc
+}, {
+  type: "input",
+  message: "Please give email:",
+  name: "internEmail",
+  validate: valFunc
+}, {
+  type: "input",
+  message: "Please give school name:",
+  name: "school",
+  validate: valFunc
+}]).then(function (internAnswers) {
+  const intern = new Intern(internAnswers.internName, internAnswers.internID, internAnswers.internEmail, internAnswers.school)
+})
+
 
 // After the user has input all employees desired, call the `render` function (required
 // above) and pass in an array containing all employee objects; the `render` function will

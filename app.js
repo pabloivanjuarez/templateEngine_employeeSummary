@@ -1,6 +1,7 @@
 const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
+const questions = require("./lib/QuestionObj")
 const inquirer = require("inquirer");
 const path = require("path");
 const fs = require("fs");
@@ -19,7 +20,7 @@ const Choices = require("inquirer/lib/objects/choices");
 // and to create objects for each team member (using the correct classes as blueprints!)
 
 //validate function
-function valFunc() {
+function valFunc(answer) {
   if (answer !== "") {
     return true;
   }
@@ -62,29 +63,15 @@ function team() {
 }
 
 function addManager() {
-
+  var createQ = {
+    type: "input",
+    message: "Please give Office Number:",
+    name: "managerOfficeNum",
+    validate: valFunc
+  }
+  questions.push(createQ)
   inquirer.prompt(
-    [{
-      type: "input",
-      message: "Please give name:",
-      name: "managerName",
-      // validate: valFunc
-    }, {
-      type: "input",
-      message: "Please give id number:",
-      name: "managerID",
-      // validate: valFunc
-    }, {
-      type: "input",
-      message: "Please give email:",
-      name: "managerEmail",
-      // validate: valFunc
-    }, {
-      type: "input",
-      message: "Please give Office Number:",
-      name: "managerOfficeNum",
-      // validate: valFunc
-    }, ]
+    questions
   ).then(function (managerAnswers) {
     //adding answers to Manager handler
     const manager = new Manager(managerAnswers.managerName, managerAnswers.managerID, managerAnswers.managerEmail, managerAnswers.managerOfficeNum)

@@ -72,9 +72,10 @@ function addManager() {
   let managerQuestions = [...questions, ...uniqueQuestion]
   inquirer.prompt(managerQuestions).then(function (managerAnswers) {
     //adding answers to Manager handler
-    const manager = new Manager(managerAnswers.managerName, managerAnswers.managerID, managerAnswers.managerEmail, managerAnswers.managerOfficeNum)
+    const manager = new Manager(managerAnswers.name, managerAnswers.id, managerAnswers.email, managerAnswers.managerOfficeNum)
     teamMembers.push(manager)
     //calling starter function, choices
+    console.log(manager);
     team()
   })
 }
@@ -89,26 +90,28 @@ function addEngineer() {
   let engineerQuestions = [...questions, ...uniqueQuestion2]
   inquirer.prompt(engineerQuestions).then(function (engineerAnswers) {
     //adding answers to Engineer handler
-    const engineer = new Engineer(engineerAnswers.engineerName, engineerAnswers.engineerID, engineerAnswers.engineerEmail, engineerAnswers.gitHub)
+    const engineer = new Engineer(engineerAnswers.name, engineerAnswers.id, engineerAnswers.email, engineerAnswers.gitHub)
     teamMembers.push(engineer)
     //calling starter function, choices
+    console.log(engineer);
     team()
   })
 }
 
 function addIntern() {
-  var uniqueQuestion3 = {
+  var uniqueQuestion3 = [{
     type: "input",
     message: "Please give school name:",
     name: "school",
     validate: valFunc
-  }
-  questions.push(uniqueQuestion3)
-  inquirer.prompt(questions).then(function (internAnswers) {
+  }]
+  internQuestions = [...questions, ...uniqueQuestion3]
+  inquirer.prompt(internQuestions).then(function (internAnswers) {
     //adding answers to Intern handler
-    const intern = new Intern(internAnswers.internName, internAnswers.internID, internAnswers.internEmail, internAnswers.school)
+    const intern = new Intern(internAnswers.name, internAnswers.id, internAnswers.email, internAnswers.school)
     teamMembers.push(intern)
     //calling starter function, choices
+    console.log(intern);
     team()
   })
 }

@@ -1,7 +1,7 @@
 const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
-const questions = require("./lib/QuestionObj")
+let questions = require("./lib/QuestionObj")
 const inquirer = require("inquirer");
 const path = require("path");
 const fs = require("fs");
@@ -63,14 +63,14 @@ function team() {
 }
 
 function addManager() {
-  var uniqueQuestion = {
+  var uniqueQuestion = [{
     type: "input",
     message: "Please give Office Number:",
     name: "managerOfficeNum",
     validate: valFunc
-  }
-  questions.push(uniqueQuestion)
-  inquirer.prompt(questions).then(function (managerAnswers) {
+  }]
+  let managerQuestions = [...questions, ...uniqueQuestion]
+  inquirer.prompt(managerQuestions).then(function (managerAnswers) {
     //adding answers to Manager handler
     const manager = new Manager(managerAnswers.managerName, managerAnswers.managerID, managerAnswers.managerEmail, managerAnswers.managerOfficeNum)
     teamMembers.push(manager)
@@ -80,14 +80,14 @@ function addManager() {
 }
 
 function addEngineer() {
-  var uniqueQuestion = {
+  var uniqueQuestion2 = [{
     type: "input",
     message: "Please give GitHub username:",
     name: "gitHub",
     validate: valFunc
-  }
-  questions.push(uniqueQuestion)
-  inquirer.prompt(questions).then(function (engineerAnswers) {
+  }]
+  let engineerQuestions = [...questions, ...uniqueQuestion2]
+  inquirer.prompt(engineerQuestions).then(function (engineerAnswers) {
     //adding answers to Engineer handler
     const engineer = new Engineer(engineerAnswers.engineerName, engineerAnswers.engineerID, engineerAnswers.engineerEmail, engineerAnswers.gitHub)
     teamMembers.push(engineer)
@@ -97,13 +97,13 @@ function addEngineer() {
 }
 
 function addIntern() {
-  var uniqueQuestion = {
+  var uniqueQuestion3 = {
     type: "input",
     message: "Please give school name:",
     name: "school",
     validate: valFunc
   }
-  questions.push(uniqueQuestion)
+  questions.push(uniqueQuestion3)
   inquirer.prompt(questions).then(function (internAnswers) {
     //adding answers to Intern handler
     const intern = new Intern(internAnswers.internName, internAnswers.internID, internAnswers.internEmail, internAnswers.school)

@@ -63,13 +63,13 @@ function team() {
 }
 
 function addManager() {
-  var createQ = {
+  var uniqueQuestion = {
     type: "input",
     message: "Please give Office Number:",
     name: "managerOfficeNum",
     validate: valFunc
   }
-  questions.push(createQ)
+  questions.push(uniqueQuestion)
   inquirer.prompt(questions).then(function (managerAnswers) {
     //adding answers to Manager handler
     const manager = new Manager(managerAnswers.managerName, managerAnswers.managerID, managerAnswers.managerEmail, managerAnswers.managerOfficeNum)
@@ -80,13 +80,13 @@ function addManager() {
 }
 
 function addEngineer() {
-  var createQ = {
+  var uniqueQuestion = {
     type: "input",
     message: "Please give GitHub username:",
     name: "gitHub",
     validate: valFunc
   }
-  questions.push(createQ)
+  questions.push(uniqueQuestion)
   inquirer.prompt(questions).then(function (engineerAnswers) {
     //adding answers to Engineer handler
     const engineer = new Engineer(engineerAnswers.engineerName, engineerAnswers.engineerID, engineerAnswers.engineerEmail, engineerAnswers.gitHub)
@@ -97,28 +97,14 @@ function addEngineer() {
 }
 
 function addIntern() {
-
-  inquirer.prompt([{
-    type: "input",
-    message: "Please give name:",
-    name: "internName",
-    // validate: valFunc
-  }, {
-    type: "input",
-    message: "Please give ID number:",
-    name: "internID",
-    // validate: valFunc
-  }, {
-    type: "input",
-    message: "Please give email:",
-    name: "internEmail",
-    // validate: valFunc
-  }, {
+  var uniqueQuestion = {
     type: "input",
     message: "Please give school name:",
     name: "school",
-    // validate: valFunc
-  }]).then(function (internAnswers) {
+    validate: valFunc
+  }
+  questions.push(uniqueQuestion)
+  inquirer.prompt(questions).then(function (internAnswers) {
     //adding answers to Intern handler
     const intern = new Intern(internAnswers.internName, internAnswers.internID, internAnswers.internEmail, internAnswers.school)
     teamMembers.push(intern)

@@ -70,9 +70,7 @@ function addManager() {
     validate: valFunc
   }
   questions.push(createQ)
-  inquirer.prompt(
-    questions
-  ).then(function (managerAnswers) {
+  inquirer.prompt(questions).then(function (managerAnswers) {
     //adding answers to Manager handler
     const manager = new Manager(managerAnswers.managerName, managerAnswers.managerID, managerAnswers.managerEmail, managerAnswers.managerOfficeNum)
     teamMembers.push(manager)
@@ -82,28 +80,14 @@ function addManager() {
 }
 
 function addEngineer() {
-
-  inquirer.prompt([{
-    type: "input",
-    message: "Please give name:",
-    name: "engineerName",
-    // validate: valFunc
-  }, {
-    type: "input",
-    message: "Please give ID number:",
-    name: "engineerID",
-    // validate: valFunc
-  }, {
-    type: "input",
-    message: "Please give email:",
-    name: "engineerEmail",
-    // validate: valFunc
-  }, {
+  var createQ = {
     type: "input",
     message: "Please give GitHub username:",
     name: "gitHub",
-    // validate: valFunc
-  }]).then(function (engineerAnswers) {
+    validate: valFunc
+  }
+  questions.push(createQ)
+  inquirer.prompt(questions).then(function (engineerAnswers) {
     //adding answers to Engineer handler
     const engineer = new Engineer(engineerAnswers.engineerName, engineerAnswers.engineerID, engineerAnswers.engineerEmail, engineerAnswers.gitHub)
     teamMembers.push(engineer)

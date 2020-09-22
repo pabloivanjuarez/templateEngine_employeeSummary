@@ -75,7 +75,6 @@ function addManager() {
     const manager = new Manager(managerAnswers.name, managerAnswers.id, managerAnswers.email, managerAnswers.managerOfficeNum)
     teamMembers.push(manager)
     //calling starter function, choices
-    console.log(manager);
     team()
   })
 }
@@ -93,7 +92,6 @@ function addEngineer() {
     const engineer = new Engineer(engineerAnswers.name, engineerAnswers.id, engineerAnswers.email, engineerAnswers.gitHub)
     teamMembers.push(engineer)
     //calling starter function, choices
-    console.log(engineer);
     team()
   })
 }
@@ -111,7 +109,6 @@ function addIntern() {
     const intern = new Intern(internAnswers.name, internAnswers.id, internAnswers.email, internAnswers.school)
     teamMembers.push(intern)
     //calling starter function, choices
-    console.log(intern);
     team()
   })
 }

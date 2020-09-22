@@ -1,6 +1,6 @@
 
   # TEES(Template Engine, Employee Summarizer)
-  ![License Badge](https://img.shields.io/badge/License-MIT-blue) ![JS Badge](https://img.shields.io/badge/JavaScript-82.3%25-green)
+  ![License Badge](https://img.shields.io/badge/License-MIT-blue) ![JS Badge](https://img.shields.io/badge/JavaScript-82.3%25-yellow)
   ![HTML Badge](https://img.shields.io/badge/HTML-17.7%25-red)
   ## Description
 

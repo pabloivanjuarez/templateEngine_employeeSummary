@@ -1,7 +1,7 @@
-const Manager = require("./lib/Manager");
-const Engineer = require("./lib/Engineer");
-const Intern = require("./lib/Intern");
-let questions = require("./lib/QuestionObj")
+const Manager = require("./assets/lib/Manager");
+const Engineer = require("./assets/lib/Engineer");
+const Intern = require("./assets/lib/Intern");
+let questions = require("./assets/lib/QuestionObj")
 const inquirer = require("inquirer");
 const path = require("path");
 const fs = require("fs");
@@ -12,7 +12,7 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 //render manipulated in order to test app
 const {
   render
-} = require("./lib/htmlRenderer");
+} = require("./assets/lib/htmlRenderer");
 const Choices = require("inquirer/lib/objects/choices");
 
 

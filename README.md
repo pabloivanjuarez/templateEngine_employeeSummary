@@ -6,7 +6,6 @@
 
   A CLI that creates a profile page, in HTML, for your work team.
 
-
 ---
   ## Table of Contents
   
@@ -20,7 +19,6 @@
 
   * [Questions](#questions)
 
-
 ---
   ## Installation
 
@@ -30,13 +28,6 @@
    npm i
    ```
 
-
----
-  ## Usage
- 
-  Space created for your Both
-
-
 ---  
   ## Tests
   In order to run tests, run the following command:
@@ -45,9 +36,26 @@
    npm run test
    ```
 
+---
+  ## Usage
+ 
+  In order to run the CLI, run the following command:
+
+```
+node app.js
+```
+Use the CLI however you deem fit, your team.html will be created and placed in the output folder.
+
+Here are some images that show how TEES is used:
+  ##### Start
+![gif1](https://media.giphy.com/media/1EAyWkQPWRqA0CnrLN/giphy.gif)
+  ##### Continuing CLI questions
+![gif2](https://media.giphy.com/media/GqbDMZQqMkgWwJLNOA/giphy.gif)
+  ##### Result
+![result](assets\media\exampleTEES_.jpg)
 
 ---  
-  ## Contributing
+  ## Contributor
 
   [Pablo Juarez](https://github.com/pabloivanjuarez)  
 

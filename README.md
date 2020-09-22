@@ -44,7 +44,7 @@
 ---  
   ## Contributing
 
-  
+  [Pablo Juarez](https://github.com/pabloivanjuarez)  
 
   
 ---  

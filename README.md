@@ -1,7 +1,7 @@
 
   # TEES(Template Engine, Employee Summarizer)
-  ![License Badge](https://img.shields.io/badge/License-MIT-blue) ![JS Badge](https://img.shields.io/badge/JavaScript-82.3%25-yellow)
-  ![HTML Badge](https://img.shields.io/badge/HTML-17.7%25-red)
+  ![License Badge](https://img.shields.io/badge/License-MIT-blue) ![JS Badge](https://img.shields.io/badge/JavaScript-67.4%25-yellow)
+  ![HTML Badge](https://img.shields.io/badge/HTML-32.6%25-red)
   ## Description
 
   A CLI that creates a profile page, in HTML, for your work team.

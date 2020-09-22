@@ -38,6 +38,7 @@
 ---  
   ## Tests
   In order to run tests, run the following command:
+  
    ```npm run test```
 
 

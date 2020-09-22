@@ -63,13 +63,13 @@ function team() {
 }
 
 function addManager() {
-  var uniqueQuestion = [{
+  var uniqueQuestion1 = [{
     type: "input",
     message: "Please give Office Number:",
     name: "managerOfficeNum",
     validate: valFunc
   }]
-  let managerQuestions = [...questions, ...uniqueQuestion]
+  let managerQuestions = [...questions, ...uniqueQuestion1]
   inquirer.prompt(managerQuestions).then(function (managerAnswers) {
     //adding answers to Manager handler
     const manager = new Manager(managerAnswers.name, managerAnswers.id, managerAnswers.email, managerAnswers.managerOfficeNum)

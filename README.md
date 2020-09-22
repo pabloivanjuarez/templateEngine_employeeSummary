@@ -26,7 +26,9 @@
 
   To install necessary dependencies, run the following command:
   
-   ```npm i```
+   ```
+   npm i
+   ```
 
 
 ---
@@ -38,8 +40,10 @@
 ---  
   ## Tests
   In order to run tests, run the following command:
-  
-   ```npm run test```
+
+   ```
+   npm run test
+   ```
 
 
 ---  

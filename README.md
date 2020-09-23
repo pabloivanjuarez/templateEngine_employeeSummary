@@ -57,7 +57,7 @@ Here are some images that show how TEES is used:
 ---  
   ## Contributor
 
-  [Pablo Juarez](https://github.com/pabloivanjuarez)  
+  [Pablo Juarez](https://github.com/pabloivanjuarez)   
 
   
 ---  
